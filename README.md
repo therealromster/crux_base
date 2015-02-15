@@ -1,10 +1,8 @@
 # crux_base
-Base crux docker image with a few modfications for testing packages in.
+Base crux docker image with a few modifications for testing packages in.
 
 There are a few alterations from crux:latest, here are the major changes:
 
-Source mirrors
-Logging on by default
-Using a system cache for speed up compiles
-Default number of make jobs to number of CPU cores
-Use xz compression on packages
+Source mirrors, logging on by default, using a system cache for speed up compiles, default number of make jobs to number of CPU cores, and use xz compression on packages.
+
+docker run -i -t -v /var/cache/ccache:/var/cache/ccache romster/crux-base

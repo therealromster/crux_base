@@ -39,4 +39,4 @@ RUN \
 	rm /tmp/{crux.asm,Makefile} && \
 	cd -
 
-CMD . /etc/profile
+CMD . /etc/profile && /bin/sh
