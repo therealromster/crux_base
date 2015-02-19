@@ -2,6 +2,7 @@ FROM crux:latest
 MAINTAINER Danny Rawlins <contact at romster dot me>
 
 VOLUME /var/cache/ccache
+VOLUME /var/ports/packages
 VOLUME /var/log/pkgbuild
 VOLUME /usr/ports
 
