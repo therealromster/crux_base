@@ -38,7 +38,7 @@ RUN \
 	ports -u core opt && \
 	prt-get depinst ccache kmod prt-utils && \
 	prt-get sysup && \
-	rm -r /usr/ports/{core,opt} && \
+	rm -r /usr/ports/{core,opt} /var/ports/packages/* && \
 	cd /tmp && \
 	wget http://crux.ster.zone/projects/crux/{crux.asm,Makefile} && \
 	make && \
