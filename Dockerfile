@@ -8,6 +8,7 @@ VOLUME /usr/ports
 ENV PATH="/usr/lib/ccache/:/sbin:/usr/sbin:/opt/sbin:/bin:/usr/bin:/opt/bin"
 ENV CCACHE_DIR="/var/cache/ccache"
 ENV CCACHE_COMPILERCHECK="%compiler% -dumpversion; crux"
+ENV MAKEFLAGS="-j\$(/usr/bin/getconf _NPROCESSORS_ONLN)"
 
 ENV PS1='\n\[\033[1;34m\]\u\[\033[0m\]@\[\033[1;31m\]\h\[\033[0m\]\n\[\033[0;32m\]\d \t\[\033[0m\]\n\[\033[1;37m\]\w\[\033[0m\]\n\$ '
 ENV PS2='\[\033[1m\]> \[\033[0m\]'
@@ -27,7 +28,6 @@ RUN \
 		-e 's|# rmlog_on_success yes|rmlog_on_success yes|' \
 		-i /etc/prt-get.conf && \
 	sed \
-	-e 's|# export MAKEFLAGS="-j2"|export MAKEFLAGS="-j\$(/usr/bin/getconf _NPROCESSORS_ONLN)"|' \
 	-e 's|# PKGMK_SOURCE_MIRRORS=()|PKGMK_SOURCE_MIRRORS=(http://10.0.0.1/distfiles/ http://crux.nu/distfiles/)|' \
 	-e 's|# PKGMK_PACKAGE_DIR="$PWD"|PKGMK_PACKAGE_DIR="/var/ports/packages"|' \
 	-e 's|# PKGMK_DOWNLOAD="no"|PKGMK_DOWNLOAD="yes"|' \
@@ -46,4 +46,4 @@ RUN \
 	rm /tmp/{crux.asm,Makefile} && \
 	cd -
 
-CMD . /etc/profile && /bin/sh
+CMD /bin/sh
