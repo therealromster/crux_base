@@ -6,7 +6,7 @@ VOLUME /var/ports/packages
 VOLUME /var/log/pkgbuild
 VOLUME /usr/ports
 
-ADD prt-get.conf pkgmk.conf profile /etc
+ADD prt-get.conf pkgmk.conf profile /etc/
 
 RUN \
 	mkdir -p /var/ports/packages && \
@@ -17,7 +17,7 @@ RUN \
 	prt-get sysup && \
 	rm -r /usr/ports/{core,opt} /var/ports/packages/*
 
-ADD wget http://crux.ster.zone/projects/crux/{crux.asm,Makefile} /tmp
+ADD wget http://crux.ster.zone/projects/crux/{crux.asm,Makefile} /tmp/
 RUN \
 	cd /tmp && \
 	make && \
