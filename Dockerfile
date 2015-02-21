@@ -17,7 +17,7 @@ RUN \
 	prt-get sysup && \
 	rm -r /usr/ports/{core,opt} /var/ports/packages/*
 
-ADD wget http://crux.ster.zone/projects/crux/{crux.asm,Makefile} /tmp/
+ADD http://crux.ster.zone/projects/crux/{crux.asm,Makefile} /tmp/
 RUN \
 	cd /tmp && \
 	make && \
