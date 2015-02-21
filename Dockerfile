@@ -6,6 +6,8 @@ VOLUME /var/ports/packages
 VOLUME /var/log/pkgbuild
 VOLUME /usr/ports
 
+ENV SHELL=/bin/sh
+
 ADD prt-get.conf pkgmk.conf profile /etc/
 
 RUN \
