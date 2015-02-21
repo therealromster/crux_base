@@ -17,7 +17,11 @@ RUN \
 	prt-get sysup && \
 	rm -r /usr/ports/{core,opt} /var/ports/packages/*
 
-ADD http://crux.ster.zone/projects/crux/{crux.asm,Makefile} /tmp/
+ADD \
+	http://crux.ster.zone/projects/crux/crux.asm \
+	http://crux.ster.zone/projects/crux/Makefile \
+	/tmp/
+
 RUN \
 	cd /tmp && \
 	make && \
