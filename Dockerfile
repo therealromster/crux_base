@@ -18,7 +18,8 @@ RUN \
 	prt-get depinst vim ccache kmod elfutils prt-utils && \
 	prt-get remove elfutils && \
 	prt-get sysup && \
-	rm -r /usr/ports/{core,opt} /var/ports/packages/*
+	rm -r /usr/ports/{core,opt} /var/ports/packages/* && \
+	ports -u
 
 ADD \
 	http://crux.ster.zone/projects/crux/crux.asm \
