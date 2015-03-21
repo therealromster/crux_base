@@ -15,7 +15,8 @@ RUN \
 	mv /etc/ports/contrib.rsync{.inactive,} && \
 	mv /etc/ports/compat-32.rsync{.inactive,} && \
 	ports -u core opt && \
-	prt-get depinst ccache kmod prt-utils && \
+	prt-get depinst vim ccache kmod elfutils prt-utils && \
+	prt-get remove elfutils && \
 	prt-get sysup && \
 	rm -r /usr/ports/{core,opt} /var/ports/packages/*
 
