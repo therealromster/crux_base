@@ -51,12 +51,10 @@ RUN \
 	mkdir -p /var/ports/packages && \
 	mv /etc/ports/contrib.rsync{.inactive,} && \
 	mv /etc/ports/compat-32.rsync{.inactive,} && \
-	ports -u core opt romster && \
-	prt-get depinst vim ccache kmod httpup elfutils prt-utils pkg-not pkg-url check-32-versions && \
+	ports -u core opt && \
+	prt-get depinst vim ccache kmod httpup elfutils prt-utils && \
 	prt-get remove elfutils && \
 	prt-get sysup && \
 	rm -r /usr/ports/{core,opt} /var/ports/packages/*
-
-RUN ports -u
 
 CMD . /etc/profile && /bin/sh
