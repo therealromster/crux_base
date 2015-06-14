@@ -33,7 +33,7 @@ RUN \
 	rm /tmp/prt-ins-1.0/* && \
 	rmdir /tmp/prt-ins-1.0
 
-# /usr/bin/crux
+# ASM version of /usr/bin/crux for speed with ccache
 RUN \
 	cd /tmp && \
 	make && \
@@ -51,10 +51,10 @@ RUN \
 	mkdir -p /var/ports/packages && \
 	mv /etc/ports/contrib.rsync{.inactive,} && \
 	mv /etc/ports/compat-32.rsync{.inactive,} && \
-	ports -u core opt && \
-	prt-get depinst vim ccache kmod httpup elfutils prt-utils && \
+	ports -u && \
+	prt-get depinst vim ccache kmod httpup elfutils prt-utils pkg-not pkg-url check-32-versions && \
 	prt-get remove elfutils && \
 	prt-get sysup && \
-	rm -r /usr/ports/{core,opt} /var/ports/packages/*
+	prtwash -a -s -p
 
 CMD . /etc/profile && /bin/sh
