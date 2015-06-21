@@ -29,6 +29,18 @@ ADD \
 	http://crux.ster.zone/ports/romster-master.tar.xz \
 	/usr/ports/
 
+RUN \
+	cd /usr/ports/ && \
+	tar -xf core-3.1.tar.xz && \
+	tar -xf opt-3.1.tar.xz && \
+	tar -xf xorg-3.1.tar.xz && \
+	tar -xf compat-32-3.1.tar.xz && \
+	tar -xf contrib-3.1.tar.xz && \
+	tar -xf xfce-3.1.tar.xz && \
+	tar -xf kde4-3.0.tar.xz && \
+	tar -xf enlightenment-3.0.tar.xz && \
+	tar -xf romster-master.tar.xz
+
 ADD https://crux.nu/portdb/?a=getup&q=romster /etc/ports/romster.httpup
 ADD https://crux.nu/portdb/?a=getup&q=kde4 /etc/ports/kde4.rsync
 ADD https://crux.nu/portdb/?a=getup&q=xfce /etc/ports/xfce.rsync
