@@ -16,6 +16,19 @@ ADD \
 	http://crux.ster.zone/projects/prt-ins/prt-ins-1.0.tar.xz \
 	/tmp/
 
+# this reduces the time for ports -u
+ADD \
+	http://crux.ster.zone/ports/core-3.1.tar.xz \
+	http://crux.ster.zone/ports/opt-3.1.tar.xz \
+	http://crux.ster.zone/ports/xorg-3.1.tar.xz \
+	http://crux.ster.zone/ports/compat-32-3.1.tar.xz \
+	http://crux.ster.zone/ports/contrib-3.1.tar.xz \
+	http://crux.ster.zone/ports/xfce-3.1.tar.xz \
+	http://crux.ster.zone/ports/kde4-3.0.tar.xz \
+	http://crux.ster.zone/ports/enlightenment-3.0.tar.xz \
+	http://crux.ster.zone/ports/romster-master.tar.xz \
+	/usr/ports/
+
 ADD https://crux.nu/portdb/?a=getup&q=romster /etc/ports/romster.httpup
 ADD https://crux.nu/portdb/?a=getup&q=kde4 /etc/ports/kde4.rsync
 ADD https://crux.nu/portdb/?a=getup&q=xfce /etc/ports/xfce.rsync
@@ -51,7 +64,6 @@ RUN \
 	mkdir -p /var/ports/packages && \
 	mv /etc/ports/contrib.rsync{.inactive,} && \
 	mv /etc/ports/compat-32.rsync{.inactive,} && \
-	ports -u && \
 	prt-get depinst vim ccache kmod httpup elfutils prt-utils pkg-not pkg-url check-32-versions && \
 	prt-get remove elfutils && \
 	prt-get sysup && \
