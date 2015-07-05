@@ -29,17 +29,17 @@ ADD \
 	http://crux.ster.zone/ports/romster-master.tar.xz \
 	/usr/ports/
 
-RUN \
-	cd /usr/ports/ && \
-	tar -xf core-3.1.tar.xz && \
-	tar -xf opt-3.1.tar.xz && \
-	tar -xf xorg-3.1.tar.xz && \
-	tar -xf compat-32-3.1.tar.xz && \
-	tar -xf contrib-3.1.tar.xz && \
-	tar -xf xfce-3.1.tar.xz && \
-	tar -xf kde4-3.0.tar.xz && \
-	tar -xf enlightenment-3.0.tar.xz && \
-	tar -xf romster-master.tar.xz
+#RUN \
+#	cd /usr/ports/ && \
+#	bsdtar -xvf core-3.1.tar.xz && \
+#	bsdtar -xvf opt-3.1.tar.xz && \
+#	bsdtar -xvf xorg-3.1.tar.xz && \
+#	bsdtar -xvf compat-32-3.1.tar.xz && \
+#	bsdtar -xvf contrib-3.1.tar.xz && \
+#	bsdtar -xvf xfce-3.1.tar.xz && \
+#	bsdtar -xvf kde4-3.0.tar.xz && \
+#	bsdtar -xvf enlightenment-3.0.tar.xz && \
+#	bsdtar -xvf romster-master.tar.xz
 
 ADD https://crux.nu/portdb/?a=getup&q=romster /etc/ports/romster.httpup
 ADD https://crux.nu/portdb/?a=getup&q=kde4 /etc/ports/kde4.rsync
@@ -76,6 +76,7 @@ RUN \
 	mkdir -p /var/ports/packages && \
 	mv /etc/ports/contrib.rsync{.inactive,} && \
 	mv /etc/ports/compat-32.rsync{.inactive,} && \
+	ports -u && \
 	prt-get depinst vim ccache kmod httpup elfutils prt-utils pkg-not pkg-url check-32-versions && \
 	prt-get remove elfutils && \
 	prt-get sysup && \
